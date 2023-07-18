@@ -1,0 +1,25 @@
+{
+  "name": "movies-explorer-api",
+  "version": "1.0.0",
+  "description": "Сервис, в котором можно найти фильмы по запросу и сохранить в личном кабинете.",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "lint": "npx eslint ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rastereo/movies-explorer-api.git"
+  },
+  "author": "rastereo",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rastereo/movies-explorer-api/issues"
+  },
+  "homepage": "https://github.com/rastereo/movies-explorer-api#readme",
+  "devDependencies": {
+    "eslint": "^8.45.0",
+    "eslint-config-airbnb-base": "^15.0.0",
+    "eslint-plugin-import": "^2.27.5"
+  }
+}
