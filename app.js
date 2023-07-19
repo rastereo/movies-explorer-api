@@ -6,9 +6,9 @@ const cookieParser = require('cookie-parser');
 const { errors } = require('celebrate');
 const cors = require('cors');
 const helmet = require('helmet');
-const rateLimit = require('express-rate-limit');
 
 const router = require('./routes');
+const rateLimitConfig = require('./utils/rateLimitConfig');
 const { errorHandler } = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
@@ -22,10 +22,7 @@ app.use(cookieParser());
 
 app.use(requestLogger);
 
-app.use(rateLimit({
-  windowMs: 15 * 60 * 1000,
-  max: 100,
-}));
+app.use(rateLimitConfig);
 
 app.use(cors({
   credentials: true,
@@ -45,7 +42,4 @@ mongoose.connect(MONGODB_LINK, {
   useNewUrlParser: true,
 });
 
-app.listen(PORT, () => {
-  // eslint-disable-next-line no-console
-  console.log(`App listening on port ${PORT}`);
-});
+app.listen(PORT);
