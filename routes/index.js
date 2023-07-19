@@ -11,6 +11,7 @@ const {
 } = require('../utils/celebrateValidationConfig');
 const auth = require('../middlewares/auth');
 const userRoutes = require('./users');
+const movieRoutes = require('./movies');
 
 router.post('/signup', signUpValidator, createUser);
 
@@ -21,5 +22,7 @@ router.get('/signout', logoutUser);
 router.use(auth);
 
 router.use('/users', userRoutes);
+
+router.use('/movies', movieRoutes);
 
 module.exports = router;

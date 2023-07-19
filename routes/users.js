@@ -4,9 +4,7 @@ const {
   getUserById,
   updateUser,
 } = require('../controllers/users');
-const {
-  updateUserValidator,
-} = require('../utils/celebrateValidationConfig');
+const { updateUserValidator } = require('../utils/celebrateValidationConfig');
 
 router.get('/me', getUserById);
 
