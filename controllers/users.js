@@ -66,9 +66,34 @@ const getUserById = (req, res, next) => {
     .catch(next);
 };
 
+const updateUser = (req, res, next) => {
+  const { email, name } = req.body;
+
+  User.findByIdAndUpdate(
+    req.user._id,
+    { email, name },
+    {
+      new: true,
+      runValidators: true,
+    },
+  )
+    .orFail(() => new NotFoundError('Пользователя с указанным id не существует.'))
+    .then((user) => res.send({ data: user }))
+    .catch((err) => {
+      if (err.name === 'ValidationError') {
+        next(new BadRequestError('Переданы некорректные данные при обновлении профиля.'));
+      } else if (err.code === 11000) {
+        next(new ConflictError('Указанный email уже существует на сервере.'));
+      } else {
+        next(err);
+      }
+    });
+};
+
 module.exports = {
   createUser,
   loginUser,
   logoutUser,
   getUserById,
+  updateUser,
 };
