@@ -25,4 +25,8 @@ router.use('/users', userRoutes);
 
 router.use('/movies', movieRoutes);
 
+router.use((req, res, next) => {
+  next(new NotFoundError('Данные по запрошенному пути не найдены.'));
+});
+
 module.exports = router;
