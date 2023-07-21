@@ -12,6 +12,7 @@ const {
 const auth = require('../middlewares/auth');
 const userRoutes = require('./users');
 const movieRoutes = require('./movies');
+const NotFoundError = require('../components/NotFoundError');
 
 router.post('/signup', signUpValidator, createUser);
 
