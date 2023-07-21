@@ -12,7 +12,10 @@ const rateLimitConfig = require('./utils/rateLimitConfig');
 const { errorHandler } = require('./middlewares/error');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
 
-const { PORT = 3000, MONGODB_LINK } = process.env;
+const {
+  PORT = 3000,
+  MONGODB_LINK = 'mongodb://localhost:27017/bitfilmsdb',
+} = process.env;
 
 const app = express();
 
