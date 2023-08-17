@@ -29,6 +29,7 @@ app.use(rateLimitConfig);
 
 app.use(cors({
   credentials: true,
+  origin: 'https://rastereo.diplom.nomoredomains.xyz',
 }));
 
 app.use(helmet());
