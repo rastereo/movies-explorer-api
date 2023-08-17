@@ -26,7 +26,10 @@ const createMovie = (req, res, next) => {
 };
 
 const deleteMovie = (req, res, next) => {
-  Movie.findById(req.params.movieId)
+  Movie.findOne({
+    movieId: req.params.movieId,
+    owner: req.user._id,
+  })
     .orFail(() => new NotFoundError('Фильм с указанным id не существует.'))
     .then((movie) => {
       if (!movie.owner.equals(req.user._id)) {
